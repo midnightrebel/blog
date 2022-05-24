@@ -1,0 +1,42 @@
+    {% extends 'base.html' %}
+    {% load static %}
+
+    {% block title %} {{ title }} :: {{ block.super }} {% endblock %}
+
+    {% block content %}
+
+
+    <section class="blog-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="blog-post-area-style">
+                    {% for post in posts %}
+                    <div class="col-md-3">
+                        <div class="single-post">
+                            {% if post.photo %}
+                            <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+                            {% else %}
+                            <img src="https://picsum.photos/id/1060/300/201/?blur=2" alt="{{ post.title }}">
+                            {% endif %}
+
+                            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                            <h4><span>Posted By: <span class="author-name">{{ post.author }}</span></span>
+                            </h4>
+                            {% if post.сontent %}
+                            {{ post.сontent|truncatewords_html:10|safe}}
+                            {% else %}
+                            <p>Empty file</p>
+                            {% endif %}
+                            <h4><span>{{ post.created_at }}</span></h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% include 'include/_pagin.html' %}
+    </section>
+
+
+    </html>
+    {% endblock %}

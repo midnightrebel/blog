@@ -1,0 +1,21 @@
+{% load menu %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="logo">
+                    <h2><a href="{% url 'home' %}">Classic</a></h2>
+                </div>
+                <div class = "nav-item">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="#">Добавить новость</a>
+                    </li>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-10">
+                {% show_menu %}
+            </div>
+        </div>
+    </div>
+</header>

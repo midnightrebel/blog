@@ -1,0 +1,29 @@
+{% load menu %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bg">
+                    <div class="row">
+                        <div class="col-md-9">
+                            {% show_menu 'footer-menu'%}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="footer-icon">
+                                <p><a href="{% url 'authentication:register'%}"><i class="fa fa-register" aria-hidden="true"></i></a>
+            <span class="navbar-text">
+                {% if request.user.is_authenticated %}
+                Welcome, {{ user.username }} <a href = "{% url 'authentication:logout' %}">| Выход</a>
+                {% else %}
+                <a href="{% url 'authentication:register' %}">Register</a> | <a href="{% url 'authentication:login' %}">Login</a>
+                {% endif %}
+            </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
